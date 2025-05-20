@@ -33,6 +33,7 @@ namespace Backend.API
             });
 
             /** Options Configuration **/
+            services.Configure<SecurityOptions>(configuration.GetSection("SecurityOptions"));
             services.Configure<PasswordOptions>(configuration.GetSection("PasswordOptions"));
 
             services

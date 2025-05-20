@@ -2,8 +2,7 @@
 {
     public class Ticket
     {
-        public Guid CreatedByUserId { get; set; }
-        public Guid AssignedToUserId { get; set; }
+        public Guid UserId { get; set; }
         public int Id { get; set; }
         public string Subject { get; set; }
         public string Priority { get; set; }
