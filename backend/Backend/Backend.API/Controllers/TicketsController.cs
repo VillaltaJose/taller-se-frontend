@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.API.Controllers
 {
-    [Authorize]
-    [ServiceFilter(typeof(AuthFilter))]
     [ApiController]
     [Route("api/[controller]")]
     public class TicketsController : ControllerBase

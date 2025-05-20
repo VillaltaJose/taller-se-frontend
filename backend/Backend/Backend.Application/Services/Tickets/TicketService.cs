@@ -1,6 +1,8 @@
-﻿using Backend.Core.Entities.Tickets;
+﻿using Backend.Core.CustomEntities;
+using Backend.Core.Entities.Tickets;
 using Backend.Core.Interfaces.Repositories;
 using Backend.Core.Interfaces.Services;
+using System.Collections.Generic;
 
 namespace Backend.Application.Services.Tickets
 {
@@ -13,24 +15,24 @@ namespace Backend.Application.Services.Tickets
             _ticketRepository = ticketRepository;
         }
 
-        public ICollection<TicketMessage> AddMessage(TicketMessage message)
+        public Result<ICollection<TicketMessage>> AddMessage(TicketMessage message)
         {
-            return _ticketRepository.AddMessage(message);
+            return Result<ICollection<TicketMessage>>.Ok(_ticketRepository.AddMessage(message));
         }
 
-        public Ticket CreateTicket(Ticket ticket)
+        public Result<Ticket> CreateTicket(Ticket ticket)
         {
-            return _ticketRepository.CreateTicket(ticket);
+            return Result<Ticket>.Ok(_ticketRepository.CreateTicket(ticket));
         }
 
-        public ICollection<TicketMessage> GetMessages(int ticketId)
+        public Result<ICollection<TicketMessage>> GetMessages(int ticketId)
         {
-            return _ticketRepository.GetMessages(ticketId);
+            return Result < ICollection < TicketMessage >>.Ok( _ticketRepository.GetMessages(ticketId));
         }
 
-        public Ticket GetTicketById(int ticketId)
+        public Result<Ticket> GetTicketById(int ticketId)
         {
-            return _ticketRepository.GetTicketById(ticketId);
+            return Result<Ticket>.Ok(_ticketRepository.GetTicketById(ticketId));
         }
     }
 }

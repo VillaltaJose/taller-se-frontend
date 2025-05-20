@@ -147,11 +147,6 @@ namespace Backend.Application.Services
             var jwt = GenerateToken(user, _securityOptions.JwtMinutesTime, sessionId: sessionId.ToString());
             var newRefreshToken = GenerateToken(user, _securityOptions.RefreshTokenMinutesTime, sessionId: sessionId.ToString());
 
-            if (shouldUpdateToken)
-            {
-                // TODO: Insertar el nuevo refresh token en la base de datos
-            }
-
             scope.Complete();
             return Result<SesionResponse>.Ok(new SesionResponse
             {
