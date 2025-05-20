@@ -188,7 +188,8 @@ namespace Backend.Application.Services
                 new ("Name", $"{user.Name}"),
                 new ("Lastname", $"{user.Name}"),
                 new ("Email", user.Email),
-                new ("UId", user.Id.ToString())
+                new ("UId", user.Id.ToString()),
+                new ("SessionId", Guid.NewGuid().ToString())
             };
 
             if (!string.IsNullOrWhiteSpace(sessionId))
