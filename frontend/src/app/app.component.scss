@@ -1,0 +1,11 @@
+tr {
+	&:hover {
+		.show-on-hover {
+			opacity: 1;
+		}
+	}
+}
+
+.min-size, .min-width {
+	width: 1%;
+}

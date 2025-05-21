@@ -1,0 +1,82 @@
+<div class="w-full h-full flex flex-no-wrap flex-column">
+	<div class="w-full h-55 flex justify-between gap-10 items-center px-15 border-b-1 border-solid border-theme-border">
+		<div class="flex items-center gap-10">
+			<a nz-button routerLink="/tickets">
+				<span nz-icon nzType="arrow-left"></span>
+			</a>
+
+			<h1 class="font-medium text-base display-block m-0">Listado de tickets</h1>
+		</div>
+
+		<div class="flex items-center">
+			<p class="display-block m-0 text-black">
+				<span class="display-inline-block m-0 font-semibold">#{{ ticketId }}</span>
+
+				{{ ticket?.subject }}
+			</p>
+		</div>
+
+		<div class="flex flex-no-wrap items-center gap-10">
+			<button nz-button nzType="primary">Marcar como cerrado</button>
+		</div>
+	</div>
+
+	<div class="w-full h-full flex flex-column flex-no-wrap">
+		<div class="w-full h-full p-15">
+			<div class="w-full mx-auto" style="max-width: 85rem;">
+				<ng-container *ngFor="let m of messages">
+					<div *ngIf="m.userId == ticket.userId; else otherUser" class="w-full mb-25 flex flex-no-wrap gap-15">						
+						<img src="https://api.dicebear.com/8.x/thumbs/svg" class="h-30 w-30 rounded-full display-block m-0">
+
+						<div class="w-full">
+							<p class="display-block m-0 font-medium text-sm mb-7 text-black">
+								{{ m.userId }}
+
+								<span class="display-inline-block font-normal text-sm m-0 ml-6 text-gray-700">
+									{{ m.createdAt | date: 'dd/MM/yyyy' }} {{ m.createdAt | date: 'HH:mm' }}
+								</span>
+							</p>
+
+							<p class="px-10 py-7 rounded-sm bg-theme-card display-block m-0 text-black">{{ m.message }}</p>
+						</div>
+					</div>
+					
+					<ng-template #otherUser>
+						<div class="w-full mb-25 flex flex-no-wrap gap-15">													
+
+							<div class="w-full">
+								<p class="text-right display-block m-0 font-medium text-sm mb-7 text-black">
+									{{ m.userId }}
+
+									<span class="display-inline-block font-normal text-sm m-0 ml-6 text-gray-700">
+										{{ m.createdAt | date: 'dd/MM/yyyy' }} {{ m.createdAt | date: 'HH:mm' }}
+									</span>
+								</p>
+
+								<p class="text-right -10 py-7 rounded-sm bg-theme-card display-block m-0 text-black">{{ m.message }}</p>
+							</div>	
+							
+							<img src="https://api.dicebear.com/8.x/thumbs/svg" class="h-30 w-30 rounded-full display-block m-0">
+						</div>
+
+					</ng-template>
+				</ng-container>
+			</div>
+		</div>
+
+		<div class="w-full p-15">
+			<div class="w-full mx-auto flex flex-no-wrap gap-15" style="max-width: 85rem;">
+				<img src="https://api.dicebear.com/8.x/thumbs/svg" class="h-30 w-30 rounded-full display-block m-0">
+
+				<div class="w-full rounded-base border-1 border-solid border-gray-400">
+					<textarea nz-input class="w-full" nzBorderless></textarea>
+
+					<div class="w-full p-10 flex flex-no-wrap justify-end">
+						<button nz-button nzType="primary">Enviar mensaje</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

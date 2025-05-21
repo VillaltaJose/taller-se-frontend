@@ -1,0 +1,25 @@
+/* BORDER STYLE */
+.border-solid { border-style: solid; }
+.border-dashed { border-style: dashed; }
+
+/* BORDER WIDTH */
+.border { border-width: 1px; }
+
+@each $name, $value in $bordering {
+	.border-#{$name} { border-width: #{$value}px;}
+	.border-t-#{$name} { border-width: #{$value}px 0 0 0;}
+	.border-r-#{$name} { border-width: 0 #{$value}px 0 0;}
+	.border-b-#{$name} { border-width: 0 0 #{$value}px 0;}
+	.border-l-#{$name} { border-width: 0 0 0 #{$value}px;}
+
+	.divide-x-#{$name} > * + * { border-width: 0; border-left-width: #{$value}px; border-style: solid; }
+	.divide-y-#{$name} > * + * { border-width: 0; border-top-width: #{$value}px; border-style: solid; }
+}
+
+@each $name, $value in $border-radius {
+	.rounded-#{$name} { border-radius: #{$value};}
+	.rounded-tl-#{$name} { border-top-left-radius: #{$value};}
+	.rounded-tr-#{$name} { border-top-right-radius: #{$value};}
+	.rounded-bl-#{$name} { border-bottom-left-radius: #{$value};}
+	.rounded-br-#{$name} { border-bottom-right-radius: #{$value};}
+}

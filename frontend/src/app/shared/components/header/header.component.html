@@ -1,0 +1,40 @@
+<div class="w-full py-7 flex items-center flex-no-wrap justify-between" style="height: 4rem;">
+	<div class="flex px-20" style="width: 20rem;">
+		<p class="display-block m-0 font-semibold text-base">
+			Taller<span class="display-inline-block text-theme-primary font-bold text-base">Software</span>
+		</p>
+	</div>
+
+	<div class="w-full" style="width: calc(100% - 70rem);">
+		<div class="bg-white rounded-sm w-full justify-center flex items-center flex-no-wrap border-1 border-solid border-theme-border" style="height: 2.8rem;">
+			<p class="display-block m-0 text-smd text-gray-900">
+				{{ title }}
+			</p>
+		</div>
+	</div>
+
+
+	<div class="flex items-center flex-no-wrap justify-end px-20" style="width: 20rem;">
+		<div class="relative cursor-pointer"
+			nz-popover
+			nzPopoverTrigger="click"
+			nzPopoverPlacement="bottomRight"
+			nzPopoverOverlayClassName="custom-popover-overlay"
+			[nzPopoverContent]="usrContextTmp">
+			<img src="https://api.dicebear.com/8.x/thumbs/svg" class="w-25 h-25 rounded-full">
+		</div>
+
+		<ng-template #usrContextTmp>
+			<div style="min-width: 20rem;">
+				<div class="w-full border-b-1 border-solid border-theme-border px-10 py-7">
+					<p class="display-block m-0 font-medium text-sm text-gray-700 mb-5">Accedido como</p>
+					<p class="display-block m-0 font-medium text-black">José Villalta</p>
+				</div>
+				<div class="w-full py-5" style="padding-left: 0.5rem; padding-right: 0.5rem;">
+					<a href="#" class="display-block m-0 cursor-pointer text-sm hover:bg-theme-card text-theme-secondary rounded-sm px-5 py-7" style="padding-left: 0.5rem; padding-right: 0.5rem;">Mi perfil</a>
+					<a href="#" class="display-block m-0 cursor-pointer text-sm hover:bg-theme-card text-theme-secondary rounded-sm px-5 py-7" style="padding-left: 0.5rem; padding-right: 0.5rem;">Cerrar Sesión</a>
+				</div>
+			</div>
+		</ng-template>
+	</div>
+</div>

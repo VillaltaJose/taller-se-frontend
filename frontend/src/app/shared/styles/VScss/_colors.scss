@@ -1,0 +1,62 @@
+@use "sass:meta";
+
+@mixin colores($colorName, $colour) {
+	@each $name, $color in $colour {
+		.bg-#{$colorName}-#{$name} { background: $color }
+		.text-#{$colorName}-#{$name} { color: $color }
+		.border-#{$colorName}-#{$name} { border-color: $color; }
+		[class~="hover:bg-#{$colorName}-#{$name}"]:hover,
+		[class~="active:bg-#{$colorName}-#{$name}"]:hover,
+		[class~="focus:bg-#{$colorName}-#{$name}"]:focus {background: $color;}
+		[class~="hover:text-#{$colorName}-#{$name}"]:hover,
+		[class~="active:text-#{$colorName}-#{$name}"]:hover,
+		[class~="focus:text-#{$colorName}-#{$name}"]:focus {color: $color;}
+		[class~="hover:border-#{$colorName}-#{$name}"]:hover,
+		[class~="active:border-#{$colorName}-#{$name}"]:hover,
+		[class~="focus:border-#{$colorName}-#{$name}"]:focus {border-color: $color;}
+	}
+}
+
+//NARANJA
+@include colores("orange", $naranja);
+
+//AZUL
+@include colores("blue", $azul);
+
+//GRIS
+@include colores("gray", $gris);
+
+//ROJO
+@include colores("red", $rojo);
+
+//VERDE
+@include colores("green", $verde);
+
+//AMARILLO
+@include colores("yellow", $amarillo);
+
+//CELESTE
+@include colores("lightblue", $celeste);
+
+//MORADO
+@include colores("purple", $morado);
+
+//THEME
+@include colores("theme", $theme);
+
+
+//COLORES POR DEFECTO / DEFAULT COLORS
+@each $name, $color in $default-colors {
+	.bg-#{$name} { background: $color }
+	.text-#{$name} { color: $color }
+	.border-#{$name} {border-color: $color;}
+	[class~="hover:bg-#{$name}"]:hover,
+	[class~="active:bg-#{$name}"]:hover,
+	[class~="focus:bg-#{$name}"]:focus {background: $color;}
+	[class~="hover:text-#{$name}"]:hover,
+	[class~="active:text-#{$name}"]:hover,
+	[class~="focus:text-#{$name}"]:focus {color: $color;}
+	[class~="hover:border-#{$name}"]:hover,
+	[class~="active:border-#{$name}"]:hover,
+	[class~="focus:border-#{$name}"]:focus {border-color: $color;}
+}

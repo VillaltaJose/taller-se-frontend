@@ -1,0 +1,58 @@
+/* Insert your custom global CSS*/
+.black-button, .btn-black {
+	background: #000;
+	border-color: #000;
+
+	&:hover, &:focus {
+		background: #333333;
+		border-color: #202020;
+	}
+}
+
+.custom-button, .btn-custom {
+	background: var(--background);
+	border-color: var(--background);
+
+	&:hover, &:focus {
+		background: var(--background);
+		border-color: var(--background);
+		filter: brightness(0.85) opacity(0.95);
+		filter: var(--background-alt);
+	}
+}
+
+.btn-orange {
+	--background: #e48e2b;
+	--background-alt: #f59445;
+}
+
+.btn-green {
+	--background: #17b473;
+	--background-alt: #32db95;
+}
+
+.btn-gray {
+	--background: #737373;
+	--background-alt: #747474;
+}
+
+form .ng-invalid.ng-touched {
+	&, & nz-select-top-control{
+		border-color: #ff3f67 !important;
+
+		&:focus {
+			box-shadow: 0 0 0 2px rgb(219 5 5 / 20%);
+		}
+	}
+}
+
+.color-box-border { border-color: var(--color-box-border) }
+.color-input { color: var(--color-input) }
+.color-input-border { border-color: var(--color-input-border) }
+.color-input-placeholder { color: var(--color-input-placeholder) }
+.color-input-required { color: var(--color-input-required) }
+.color-separator { color: var(--color-separator) }
+.bg-separator { background-color: var(--bg-separator) }
+.color-label-secondary { color: var(--color-label-secondary) }
+.bg-input-addon { background-color: var(--bg-input-addon) }
+.bg-accent { background-color: var(--bg-accent) }

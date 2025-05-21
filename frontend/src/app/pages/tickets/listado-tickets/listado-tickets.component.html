@@ -1,0 +1,48 @@
+<div class="w-full h-55 flex justify-between gap-10 items-center px-15 border-b-1 border-solid border-theme-border">
+	<h1 class="font-medium text-lg m-0 display-block">
+		Listado de Tickets
+	</h1>
+
+	<div class="flex flex-no-wrap items-center gap-10">
+		<button nz-button nzType="primary">Nuevo ticket</button>
+	</div>
+</div>
+
+<div class="w-full p-15">
+
+	<nz-table #nzTable [nzData]="tickets" nzSize="small" [nzPageSize]="10">
+		<thead>
+			<tr>
+				<th class="min-size" style="text-align: center; text-wrap: nowrap;">ID</th>
+				<th>Asunto</th>
+				<th style="text-align: center;">Prioridad</th>
+				<th style="text-align: center;">Estado</th>
+				<th>Fecha Incidencia</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let i of nzTable.data">
+				<td class="min-size font-medium text-center">{{ i.id }}</td>
+				<td>
+					<a [routerLink]="'/tickets/'+i.id" class="text-black">
+						{{ i.subject }}
+					</a>
+				</td>
+				<td>
+					<p class="text-center text-sm font-medium display-block m-0 px-7 py-6 rounded-full bg-red-100 text-red-900">
+						{{ i.priority }}
+					</p>
+				</td>
+				<td>
+					<p class="display-block text-sm font-medium m-0 px-7 py-6 bg-theme-card rounded-full text-center">
+						{{ i.status }}
+					</p>
+				</td>
+				<td>
+					{{ i.createdAt | date: 'dd/MM/yyyy' }}
+				</td>
+			</tr>
+		</tbody>
+	</nz-table>
+
+</div>

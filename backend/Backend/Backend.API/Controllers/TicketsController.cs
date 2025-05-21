@@ -16,6 +16,14 @@ namespace Backend.API.Controllers
             _ticketService = ticketService;
         }
 
+        [HttpGet()]
+        public IActionResult GetTickets()
+        {
+            var resp = _ticketService.GetAll();
+
+            return Ok(resp);
+        }
+
         [HttpGet("{ticketId:int}")]
         public IActionResult GetTickets(int ticketId)
         {

@@ -1,0 +1,39 @@
+<div class="w-screen h-screen bg-image flex items-center justify-center p-25">
+	<div class="display-block mx-auto w-full" style="max-width: 42rem;">
+		<h1 class="display-block m-0 font-semibold text-center text-theme-secondary mb-20">
+			Taller
+		</h1>
+
+		<div class="w-full p-15 rounded-base border-1 border-solid border-theme-border shadow-sm bg-white">
+			<div class="w-full grid">
+				<form [formGroup]="formLogin" class="grid w-full mx-auto" style="max-width: 40rem;">
+					<div class="grid-col-12">
+						<p class="display-block m-0 text-black font-semibold text-md">Acceder</p>
+					</div>
+
+					<div class="grid-col-12">
+						<input nz-input type="text" formControlName="email" class="w-full" placeholder="Correo">
+					</div>
+
+					<div class="grid-col-12">
+						<input nz-input type="password" formControlName="password" class="w-full" placeholder="Clave">
+					</div>
+
+					<ng-container *ngIf="errors && errors.length > 0">
+						<div class="grid-col-12 bg-redgray rounded-sm border-1 border-solid border-red-500 px-10 py-7">
+							<ng-container *ngFor="let e of errors">
+								<p class="display-block m-0 text-red-800">{{ e.text || e.code }}</p>
+							</ng-container>
+						</div>
+					</ng-container>
+
+					<div class="grid-col-12">
+						<button nz-button (click)="login()" [nzLoading]="loading" nzType="primary" class="w-full">Iniciar sesión</button>
+						<a href="/login" class="mt-7 display-block text-right">Olvidé mi contraseña</a>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="mt-15 text-center display-block m-0 text-sm text-gray-600">V1.0</div>
+	</div>
+</div>

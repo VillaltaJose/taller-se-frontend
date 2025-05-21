@@ -1,0 +1,5 @@
+@use "sass:string";
+
+@each $name, $value in $shadows {
+	.shadow-#{$name} { box-shadow: string.unquote($value); }
+}

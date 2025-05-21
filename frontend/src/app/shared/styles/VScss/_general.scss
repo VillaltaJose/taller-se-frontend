@@ -1,0 +1,140 @@
+html, body {
+	font-size: $default-size;
+}
+
+input, textarea, select {
+	appearance: none;
+}
+
+/* PADDINGS Y MARGINS */
+// ALL BOX
+@each $name, $size in $spacing {
+	//Padding
+	.p-#{$name}  { padding: #{$size}rem }
+	//Margin
+	.m-#{$name}  { margin: #{$size}rem }
+}
+// EJE X y Y
+@each $name, $size in $spacing {
+	//Padding
+	.px-#{$name} { padding-left: #{$size}rem; padding-right: #{$size}rem; }
+	.py-#{$name} { padding-top: #{$size}rem; padding-bottom: #{$size}rem; }
+	//Margin
+	.mx-#{$name} { margin-left: #{$size}rem; margin-right: #{$size}rem; }
+	.my-#{$name} { margin-top: #{$size}rem; margin-bottom: #{$size}rem; }
+}
+// LADOS INDIVIDUALES
+@each $name, $size in $spacing {
+	//Padding
+	.pt-#{$name} { padding-top: #{$size}rem; }
+	.pr-#{$name} { padding-right: #{$size}rem; }
+	.pb-#{$name} { padding-bottom: #{$size}rem; }
+	.pl-#{$name} { padding-left: #{$size}rem; }
+	//Margin
+	.mt-#{$name} { margin-top: #{$size}rem; }
+	.mr-#{$name} { margin-right: #{$size}rem; }
+	.mb-#{$name} { margin-bottom: #{$size}rem; }
+	.ml-#{$name} { margin-left: #{$size}rem; }
+}
+
+.mx-auto 		 {margin-left: auto; margin-right: auto;}
+
+/*======= TAMAÑOS (ALTO Y ANCHO) =======*/
+// WIDTH
+.w-full 		 { width: 100% }
+.w-screen 		 { width: 100vw }
+// HEIGHT
+.h-full 		 { height: 100% }
+.h-screen 		 { height: 100vh }
+// TAMAÑOS EPRSONALIZADOS
+@each $name, $size in $sizing {
+	.w-#{$name}  { width: #{$size}rem;}
+	.h-#{$name}  { height: #{$size}rem;}
+}
+// GRID
+.grid {
+    display: grid;
+    grid-gap: 2rem;
+    grid-column-start: 1;
+    grid-column-end: 12;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.grid-15 {
+    grid-column-start: 1;
+    grid-column-end: 15;
+    grid-template-columns: repeat(15, 1fr);
+}
+
+.no-gap {
+	grid-gap: 0;
+}
+
+.gap-25 {
+	grid-gap: 2.5rem;
+}
+
+.gap-20 {
+	grid-gap: 2rem;
+}
+
+.gap-15 {
+	grid-gap: 1.5rem;
+}
+
+.gap-10 {
+	grid-gap: 1rem;
+}
+
+.gap-7 {
+	grid-gap: 0.7rem;
+}
+
+.gap-5 {
+	grid-gap: 0.5rem;
+}
+
+@each $name, $size in $grid {
+	.grid-col-#{$name}  { grid-column: span #{$size} }
+}
+
+@each $name, $size in $queries {
+	@media(max-width: $size) {
+		[class~="#{$name}:grid"] {
+			display: grid;
+			grid-gap: 2.5rem;
+			grid-column-start: 1;
+			grid-column-end: 12;
+			grid-template-columns: repeat(12, 1fr);
+		}
+
+		@each $name2, $size2 in $grid {
+			[class~="#{$name}:grid-col-#{$name2}"]  { grid-column: span #{$size2} }
+		}
+	}
+}
+
+
+/* OPACIDADES / OPACITY */
+@each $name, $value in $opacity {
+	.opacity-#{$name},
+	[class~="hover:opacity-#{$name}"]:hover { opacity: $value }
+}
+
+/* CURSOR */
+@each $name, $value in $cursor {
+	.cursor-#{$name} { cursor: $value }
+}
+
+/* SCROLL */
+@each $name, $value in $scroll {
+	.overflow-#{$name} { overflow: $value; }
+	.overflow-x-#{$name} { overflow-x: $value; }
+	.overflow-y-#{$name} { overflow-y: $value; }
+}
+
+/* TABLES */
+.table-auto, .table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}

@@ -1,0 +1,67 @@
+.display-none  { display: none; }
+.display-block { display: block; }
+
+.flex 				{ display: flex; flex-wrap: wrap;}
+
+//FLEX WRAP
+.flex-wrap 			{ flex-wrap: wrap; }
+.flex-no-wrap 		{ flex-wrap: nowrap; }
+.flex-wrap-reverse	{ flex-wrap: wrap-reverse; }
+.flex-column	{ flex-direction: column; }
+
+//ALIGN ITEMS
+@each $name, $value in $items {
+	.items-#{$name} { align-items: $value; }
+}
+
+//ALIGN CONTENT
+@each $name, $value in $content {
+	.content-#{$name} { align-content: $value; }
+}
+
+@each $name, $value in $justify {
+	.justify-#{$name} { justify-content: $value; }
+}
+
+//POSITIONS
+.static	            { position: static; }
+.fixed	            { position: fixed; }
+.absolute	        { position: absolute; }
+.relative	        { position: relative; }
+.sticky	            { position: sticky; }
+
+@each $name, $value in $positions {
+    .top-#{$name} { top: #{$value}rem; }
+    .left-#{$name} { left: #{$value}rem; }
+    .bottom-#{$name} { bottom: #{$value}rem; }
+    .right-#{$name} { right: #{$value}rem; }
+}
+
+//Z-INDEX
+@each $name, $value in $index {
+    .z-#{$name} { z-index: #{$value}rem; }
+}
+
+@each $name, $size in $queries {
+	@media(max-width: $size) {
+		[class~="#{$name}:flex"] 			{ display: flex; flex-wrap: wrap; }
+		[class~="#{$name}:flex-wrap"] 		{ flex-wrap: wrap; }
+		[class~="#{$name}:flex-no-wrap"] 	{ flex-wrap: nowrap; }
+		[class~="#{$name}:display-none"] 	{display: none;}
+		[class~="#{$name}:display-block"] 	{display: block;}
+
+		//ALIGN ITEMS
+		@each $name2, $value2 in $items {
+			[class~="#{$name}:items-#{$name2}"] { align-items: $value2; }
+		}
+
+		//ALIGN CONTENT
+		@each $name2, $value2 in $content {
+			[class~="#{$name}:content-#{$name2}"] { align-content: $value2; }
+		}
+
+		@each $name2, $value2 in $justify {
+			[class~="#{$name}:justify-#{$name2}"] { justify-content: $value2; }
+		}
+	}
+}

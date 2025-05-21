@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import "./app/shared/styles/VScss/VSstyles.scss";
+@import "./app/shared/styles/VScss/variables";
+@import "./app/app.component.scss";
+@import "./app/shared/styles/custom.scss";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Inter', sans-serif;
+}
+
+:root {
+}
+
+.custom-popover-overlay {
+	& .ant-popover-content {
+		& .ant-popover-inner {
+			div .ant-popover-inner-content {
+				padding: 0 !important;
+			}
+		}
+	}
+}

@@ -2,7 +2,6 @@
 using Backend.Core.Entities.Tickets;
 using Backend.Core.Interfaces.Repositories;
 using Backend.Core.Interfaces.Services;
-using System.Collections.Generic;
 
 namespace Backend.Application.Services.Tickets
 {
@@ -13,6 +12,11 @@ namespace Backend.Application.Services.Tickets
         public TicketService(ITicketRepository ticketRepository)
         {
             _ticketRepository = ticketRepository;
+        }
+
+        public Result<ICollection<Ticket>> GetAll()
+        {
+            return Result<ICollection<Ticket>>.Ok(_ticketRepository.GetAll());
         }
 
         public Result<ICollection<TicketMessage>> AddMessage(TicketMessage message)

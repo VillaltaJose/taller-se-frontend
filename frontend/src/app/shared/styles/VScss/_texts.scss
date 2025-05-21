@@ -1,0 +1,49 @@
+h1, .h1 {font-size: 3.2rem; line-height: 3.9rem;}
+h2, .h2 {font-size: 2.8rem; line-height: 3.5rem;}
+h3, .h3 {font-size: 2.45rem; line-height: 3.1rem;}
+h4, .h4 {font-size: 2.12rem; line-height: 2.7rem;}
+h5, .h5 {font-size: 1.8rem;}
+h6, .h6 {font-size: 1.5rem;}
+
+p, a, strong, em, mark, i, b, u, s, span, cite, h1, h2, h3, h4, h5, h6, label, select, input, textarea {
+	display: inline-block;
+}
+
+p, a, strong, em, mark, i, b, u, s, span, cite, td, th, label, select, input, textarea {
+	font-size: 1.3rem;
+	line-height: 1.5rem;
+}
+
+
+.text-xs 		{ font-size: 0.95rem; line-height: 1.05rem; }
+.text-xsd 		{ font-size: 1.05rem; line-height: 1.15rem; }
+.text-sm 		{ font-size: 1.18rem; line-height: 1.27rem; }
+.text-smd 	 	{ font-size: 1.3rem; line-height: 1.4rem; }
+.text-base 	 	{ font-size: 1.45rem; line-height: 1.65rem; }
+.text-md 	 	{ font-size: 1.60rem; line-height: 2.2rem; }
+.text-lg 		{ font-size: 1.77rem; line-height: 2.4rem; }
+.text-xl 		{ font-size: 2.33rem; line-height: 2.9rem; }
+.text-money		{ font-size: 3.5rem; line-height: 3.9rem; }
+
+.text-left 		{ text-align: left }
+.text-right 	{ text-align: right }
+.text-center 	{ text-align: center }
+.text-justify 	{ text-align: justify }
+
+.underline		{ text-decoration: underline }
+.line-through	{ text-decoration: line-through }
+.no-underline	{ text-decoration: none }
+
+.font-thin		{ font-weight: 300 }
+.font-normal	{ font-weight: 400 }
+.font-medium	{ font-weight: 500 }
+.font-semibold	{ font-weight: 600 }
+.font-bold		{ font-weight: 700 }
+.font-black		{ font-weight: 800 }
+
+.white-space-nowrap { white-space: nowrap }
+.white-space-space 	{ white-space: nowrap }
+
+.text-ellipsis {
+	text-overflow: ellipsis;
+}
