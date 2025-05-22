@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace Backend.Application.Services
 {
@@ -18,15 +19,18 @@ namespace Backend.Application.Services
         private readonly IAuthenticationRepository _authenticationRepository;
         private readonly IPasswordService _passwordService;
         private readonly SecurityOptions _securityOptions;
+        private readonly ILogger<AuthenticationService> _logger;
 
         public AuthenticationService(
             IAuthenticationRepository authenticationRepository,
             IPasswordService passwordService,
-            IOptions<SecurityOptions> options
+            IOptions<SecurityOptions> options,
+            ILogger<AuthenticationService> logger
         )
         {
             _authenticationRepository = authenticationRepository;
             _passwordService = passwordService;
+            _logger = logger;
             _securityOptions = options.Value;
         }
 
@@ -34,10 +38,20 @@ namespace Backend.Application.Services
         {
             using var scope = TransactionScopeHelper.StartTransaction();
 
+            _logger.LogError("Test");
             var user = await _authenticationRepository.GetUserByEmail(credentialRequest.Email);
 
+            var time = new Random().Next(0, 10);
+
+            await Task.Delay(time * 1000);
+            
             if (user is null)
             {
+                _logger.LogError("Credenciales: {@Params}", new
+                {
+                    Correo = credentialRequest.Email
+                });
+
                 return Result<SesionResponse>.Fail("Incorrect username or password");
             }
 

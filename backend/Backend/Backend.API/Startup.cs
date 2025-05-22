@@ -9,6 +9,8 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using System.Globalization;
 using System.Text;
+using Serilog;
+using Serilog.Core;
 
 namespace Backend.API
 {
@@ -18,6 +20,11 @@ namespace Backend.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddSerilog(LoggerSeq());
+            });
+            
             services.AddAntiforgery(ServiceCollectionActions.SetupAntiForgery);
             services.AddScoped<Sesion>();
             services.AddScoped<MetaData>();
@@ -118,6 +125,30 @@ namespace Backend.API
             };
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+        }
+        
+        private Logger LoggerSeq()
+        {
+            var logger = new LoggerConfiguration().WriteTo.Seq(
+                    Configuration.GetValue<string>("Seq:ServerUrl") ?? string.Empty,
+                    apiKey: Configuration.GetValue<string>("Seq:ApiKey")
+                )
+                .Enrich.FromLogContext()
+                .Enrich.WithProperty("AppID", "Mi propiedad custom");
+
+            switch (Configuration.GetValue<string>("Seq:MinimumLevel"))
+            {
+                case "Debug": logger = logger.MinimumLevel.Debug(); break;
+                case "Information": logger = logger.MinimumLevel.Information(); break;
+                case "Error": logger = logger.MinimumLevel.Error(); break;
+                case "Warning": logger = logger.MinimumLevel.Warning(); break;
+                case "Fatal": logger = logger.MinimumLevel.Fatal(); break;
+                case "Verbose": logger = logger.MinimumLevel.Verbose(); break;
+
+                default: logger = logger.MinimumLevel.Error(); break;
+            }
+
+            return logger.CreateLogger();
         }
     }
 }
